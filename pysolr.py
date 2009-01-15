@@ -2,7 +2,7 @@
 """
 All we need to create a Solr connection is a url.
 
->>> conn = Solr('http://127.0.0.1:8983/solr/')
+>>> conn = Solr('http://search:8080/solr/')
 
 First, completely clear the index.
 
