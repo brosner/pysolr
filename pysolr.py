@@ -183,7 +183,7 @@ class Solr(object):
         this means scraping the html.
         """
         et = ET.parse(response)
-        return et.findtext('body/pre')
+        return "[%s] %s" % (response.reason, et.findtext('body/h1'))
 
     # Conversion #############################################################
 
