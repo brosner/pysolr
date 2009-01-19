@@ -207,8 +207,10 @@ class Solr(object):
 
     # API Methods ############################################################
 
-    def search(self, q, sort=None, start=None, rows=None):
+    def search(self, q, sort=None, start=None, rows=None, extra_params=None):
         """Performs a search and returns the results."""
+        if extra_params is None:
+            extra_params = {}
         params = {'q': q}
         if start:
             params['start'] = start
@@ -216,6 +218,7 @@ class Solr(object):
             params['rows'] = rows
         if sort:
             params['sort'] = sort
+        params.update(extra_params)
         response = self._select(params)
         if response.status != 200:
             raise SolrError(self._extract_error(response))
